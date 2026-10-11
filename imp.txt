@@ -1,0 +1,13 @@
+commands to follow for installing Ansible
+
+mkdir Ansible
+
+cd Ansible
+
+virtualenv my_ansible
+
+source my_ansible/bin/activate
+
+pip3 install ansible
+
+ansible --version
