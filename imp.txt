@@ -14,4 +14,8 @@ ansible --version
 
 ansible localhost -i localhost, -c local -m command -a "whoami"
 
-ansible localhost -i localhost, -c local -m apt -a "name=git state=present
+ansible localhost -i localhost, -c local -m apt -a "name=git state=present"
+
+ansible localhost -i localhost, -c local -m apt -a "name=python3 state=latest" -b          --on serers
+
+ansible localhost -i localhost, -c local -m apt -a "name=python3 state=latest" -b -K       --on local systems
