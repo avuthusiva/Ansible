@@ -1,0 +1,27 @@
+---
+- name: Ansbile pratice playbook
+  hosts: localhost
+  tasks:
+    - name: print hello world
+      ansible.builtin.debug:
+        msg: "Hello World"
+
+    - name: create directory
+      ansible.builtin.file:
+        path: /tmp/siva
+        state: directory
+        mode: '0755'
+    
+    - name: copy sql file
+      ansible.builtin.copy:
+        src: /tmp/scripts/file_1.sql
+        dest: /tmp/siva/file_1.sql
+        mode: '0644'
+      
+    - name: print the content of the copied file
+      ansible.builtin.shell: cat /tmp/siva/file_1.sql
+      register: file_content
+
+    - name: print the content
+      ansible.builtin.debug:
+        msg: "{{ file_content.stdout }}"

@@ -1,0 +1,15 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Running apache service
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Start apache service
+      ansible.builtin.apt:
+        name: apache2
+        state: absent
+      register: apache_install
+    - name: message
+      ansible.builtin.debug:
+        msg: "Apache service installation status: {{ apache_install }}"

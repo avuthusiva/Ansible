@@ -1,0 +1,23 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Prompting and pause test on Ansbile
+  hosts: localhost
+  gather_facts: false
+  vars_prompt:
+    - name: "username"
+      prompt: "Enter your username"
+      private: no
+    - name: "password"
+      prompt: "Enter your password"
+      private: yes
+  tasks:
+    - name: Display the entered username and password
+      debug:
+        msg:
+          - "Username: {{ username }}"
+          - "Password: {{ password }}"
+    - name: Pause for user input
+      pause:
+        prompt: "Press Enter to continue..."
+  tags:
+    - pause

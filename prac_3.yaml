@@ -1,0 +1,19 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+- name: Run postgres SQL query on Docker container
+  hosts: localhost
+  gather_facts: false
+  #become: 'yes'
+  tasks:
+    - name: Execute SQL query
+      community.postgresql.postgresql_query:
+        login_host: 127.0.0.1
+        login_port: 5432
+        login_user: sivaa
+        login_password: postgres
+        db: siva_db
+        query: "select current_database(), current_user, current_timestamp;"
+      register: sql_output
+
+    - name: Display query result
+      ansible.builtin.debug:
+        var: sql_output.query_result

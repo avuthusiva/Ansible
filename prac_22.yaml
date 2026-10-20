@@ -1,0 +1,13 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: loops in Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    nums: [1, 2, 3, 4, 5]
+  tasks:
+    - name: Print the numbers using a loop
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ nums }}"

@@ -1,0 +1,8 @@
+---
+- name: Testing with ping commnad
+  hosts: localhost
+  gather_facts: false
+  #become: 'yes'
+  tasks:
+    - name: ping the localhost
+      ping: 

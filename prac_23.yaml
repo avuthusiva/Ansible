@@ -1,0 +1,16 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: loops in Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Run commands
+      ansible.builtin.shell: "echo {{ item }}"
+      with_items: [one, two, three]
+      register: echo_results
+
+    - name: Show collected outputs
+      ansible.builtin.debug:
+        msg: "{{ item.stdout_lines }}"
+      with_items: "{{ echo_results.results }}"

@@ -1,0 +1,18 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Install apache web server
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install apache2
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+        update_cache: true
+
+    - name: Start apache2 service
+      ansible.builtin.service:
+        name: apache2
+        state: started
+        enabled: true

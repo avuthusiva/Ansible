@@ -1,0 +1,19 @@
+---
+- name: First ansbile plabook
+  hosts: localhost
+  tasks:
+    - name: print hello world
+      ansible.builtin.debug:
+        msg: "Hello World"
+
+    - name: create directory
+      ansible.builtin.file:
+        path: /tmp/ansible_test
+        state: directory
+        mode: '0755'
+    
+    - name: create a file
+      ansible.builtin.copy:
+        dest: /tmp/ansible_test/test_file.txt
+        content: "This is a test file created by Ansible."
+        mode: '0644'

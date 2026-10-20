@@ -1,0 +1,14 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Read extranal variables
+  hosts: localhost
+  gather_facts: false
+  vars:
+    var1: value1
+    var2: value2
+  tasks:
+    - name: Display the external variables
+      debug:
+        msg:
+          - "Variable 1: {{ var1 }}"
+          - "Variable 2: {{ var2 }}"

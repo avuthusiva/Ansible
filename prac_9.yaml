@@ -1,0 +1,18 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Install ifconfig package
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install ifconfig package
+      ansible.builtin.apt:
+        name: net-tools
+        state: latest
+        update_cache: true
+    - name: Display ifconfig output
+      command: ifconfig
+      register: ifconfig_output
+    - name: Show ifconfig output
+      debug:
+        var: ifconfig_output.stdout_lines

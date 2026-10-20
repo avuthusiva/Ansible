@@ -1,0 +1,16 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: uninstall apache web server
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Stop apache2 service
+      ansible.builtin.service:
+        name: apache2
+        state: stopped
+
+    - name: Uninstall apache2
+      ansible.builtin.apt:
+        name: apache2
+        state: absent

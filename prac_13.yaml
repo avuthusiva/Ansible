@@ -1,0 +1,22 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Read dynamic variables
+  hosts: localhost
+  gather_facts: false
+  vars_prompt:
+    - name: "a"
+      prompt: "Enter the first number"
+      private: no
+    - name: "b"
+      prompt: "Enter the second number"
+      private: no
+  tasks:
+    - name: Display the entered numbers
+      debug:
+        msg:
+          - "First number: {{ a }}"
+          - "Second number: {{ b }}"
+          - "Addition: {{ a | int + b | int }}"
+          - "Subtraction: {{ a | int - b | int }}"
+          - "Multiplication: {{ a | int * b | int }}"
+          - "Division: {{ a | int / b | int }}"

@@ -1,0 +1,18 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Arthimatic Operations
+  hosts: localhost
+  gather_facts: false
+  vars:
+    num1: 10
+    num2: 5
+  tasks:
+    - name: Funtions
+      debug:
+        msg: 
+        - "{{ num1 }}"
+        - "{{ num2 }}"
+        - "Addition: {{ num1 + num2 }}"
+        - "Subtraction: {{ num1 - num2 }}"
+        - "Multiplication: {{ num1 * num2 }}"
+        - "Division: {{ num1 / num2 }}"

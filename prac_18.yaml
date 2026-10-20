@@ -1,0 +1,13 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Ansible date,time and timezone
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Display the date, time and timezone
+      ansible.builtin.debug:
+        msg:
+          - "Date: {{ ansible_date_time.date }}"
+          - "Time: {{ ansible_date_time.time }}"
+          - "Date and Time: {{ ansible_date_time.date }} {{ ansible_date_time.time }}"
+          - "Timezone: {{ ansible_date_time.tz }}"

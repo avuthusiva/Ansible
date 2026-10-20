@@ -1,0 +1,10 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+- name: upgrade git to latest version
+  hosts: localhost
+  gather_facts: false
+  #become: 'yes'
+  tasks:
+    - name: upgrade git
+      package:
+        name: git
+        state: latest

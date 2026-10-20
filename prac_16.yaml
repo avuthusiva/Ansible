@@ -1,0 +1,12 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Ansible hostname and inventory hostname
+  hosts: localhost
+  #connection: local
+  gather_facts: true
+  tasks:
+    - name: Display the hostname and inventory hostname
+      ansible.builtin.debug:
+        msg:
+          - "Hostname: {{ ansible_facts['hostname'] }}"
+          - "Inventory Hostname: {{ inventory_hostname }}"

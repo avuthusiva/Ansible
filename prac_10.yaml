@@ -1,0 +1,22 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Variable testing with debug command
+  hosts: localhost
+  gather_facts: false
+  vars:
+    my_variable: "Hello, Ansible!"
+    skills: ["Oracle","Python","Snowflake","Ansible"]
+    hobbies:
+      - "Reading"
+      - "Writing"
+      - "Coding"
+  tasks:
+    - name: Display the variable
+      debug:
+        var: my_variable
+    - name: Display the list of skills
+      debug:
+        var: skills
+    - name: Display the list of hobbies
+      debug:
+        var: hobbies  

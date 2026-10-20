@@ -1,0 +1,20 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: shell vs command module
+  hosts: localhost
+  gather_facts: false
+  tasks:
+   - name: Using the command module to list files in /tmp
+     ansible.builtin.command:
+        cmd: ls -l .
+     register: command_output
+   - name: Display the output of the command module
+     ansible.builtin.debug:
+        var: command_output.stdout_lines
+   - name: Using the shell module to list files in /tmp
+     ansible.builtin.shell:
+        cmd: ls -l .
+     register: shell_output
+   - name: Display the output of the shell module
+     ansible.builtin.debug:
+        var: shell_output.stdout_lines

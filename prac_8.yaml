@@ -1,0 +1,21 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Testing with debug command
+  hosts: localhost
+  gather_facts: false
+  #become: 'yes'
+  vars:
+    ansible_hostname: "siva-desktop"
+  tasks:
+    - name: Display a message
+      debug:
+        msg: "Hello, Ansible!"
+    - name : Multiple messages
+      debug:
+        msg:
+          - "Message 1"
+          - "Message 2"
+          - "Message 3"
+    - name: Display a variable
+      debug:
+        var: ansible_hostname

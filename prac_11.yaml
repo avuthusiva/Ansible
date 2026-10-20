@@ -1,0 +1,16 @@
+#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+---
+- name: Testing register command
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Bash version
+      command: "bash --version"
+      register: bash_version_output
+
+    - set_fact:
+        bash_version: "{{ bash_version_output.stdout_lines[0].split(' ')[3].split('-')[0] }}"
+
+    - name: Display the registered variable
+      debug:
+        var: bash_version
