@@ -1,0 +1,22 @@
+#!/workspaces/Ansible/Ansible/bin/ansible-playbook
+---
+- name: checking file
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create an empty file
+      ansible.builtin.file:
+        path: ../files/siva.txt
+        state: touch
+    - name: replace files data
+      lineinfile:
+        path: ../files/siva.txt
+        line: 'phone'
+        insertafter: '^mobile'
+        state: present
+    - name: Reading file content
+      command: cat ../files/siva.txt
+      register: result
+    - name: display file content
+      debug:
+        msg: "{{ result.stdout_lines }}"

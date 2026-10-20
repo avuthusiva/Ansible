@@ -1,4 +1,4 @@
-#!/home/siva/Desktop/work/Ansible/11-10-2026/Ansible/bin/ansible-playbook
+#!/workspaces/Ansible/Ansible/bin/ansible-playbook
 ---
 - name: loops in Ansible
   hosts: localhost

@@ -1,0 +1,14 @@
+#!/workspaces/Ansible/Ansible/bin/ansible-playbook
+---
+- name: Read files data using ansible
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../files/parameters.param
+  tasks:
+    - name: print parameters data
+      debug:
+         msg: 
+          - "{{ ORACLE_HOME }}"
+          - "{{ PYTHON_DIR }}"
+      when: print_flag == 'Y'   

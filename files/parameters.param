@@ -1,0 +1,5 @@
+---
+ORACLE_HOME: /home/oracle/19c/ora
+ORACLE_DIR: /home/oracle/21c/ora
+PYTHON_DIR: /home/python3.14/bin
+print_flag: Y
