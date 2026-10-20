@@ -1,0 +1,33 @@
+#!/workspaces/Ansible/Ansible/bin/ansible-playbook
+---
+- name: Block and rescue demo
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Try to read a file
+      block:
+        - name: Show start message
+          ansible.builtin.debug:
+            msg: "Starting block"
+
+        - name: This task will fail (file does not exist)
+          ansible.builtin.command: cat /tmp/does_not_exist.txt
+
+        - name: This task is skipped because the previous one failed
+          ansible.builtin.debug:
+            msg: "You will not see this"
+
+      rescue:
+        - name: Handle the failure
+          ansible.builtin.debug:
+            msg: "Something failed, running rescue tasks"
+
+        - name: Create the missing file
+          ansible.builtin.file:
+            path: /tmp/does_not_exist.txt
+            state: touch
+
+      always:
+        - name: Always runs
+          ansible.builtin.debug:
+            msg: "Cleanup done, this runs no matter what"
